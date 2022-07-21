@@ -1,4 +1,4 @@
-function stuff(b): void {
+function stuff(): void {
   console.log('stuff');
 }
 
