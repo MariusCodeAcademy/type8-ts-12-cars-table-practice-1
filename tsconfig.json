@@ -23,7 +23,7 @@
     "skipLibCheck": true // ar praleisti tipų tikrinimą naudojant bibliotekas
   },
   "include": [
-    "./src/**/*.ts"
+    "src/**/*.ts"
 ]
   
 }
