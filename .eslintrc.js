@@ -17,5 +17,6 @@ module.exports = {
     'react/jsx-filename-extension': [0],
     '@typescript-eslint/indent': [0],
     'linebreak-style': [0],
+    'no-underscore-dangle': [0],
   },
 };
