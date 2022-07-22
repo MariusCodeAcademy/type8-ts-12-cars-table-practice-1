@@ -23,6 +23,7 @@ export default class MyTable {
     this.initialize();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private makeOneRow(dataRow: CarJoined): HTMLTableRowElement {
     // sukurtti tr
     const trEl = document.createElement('tr');
@@ -38,6 +39,10 @@ export default class MyTable {
 
   private createTableBodyRows(): void {
     // sukti ciklas per data
+    this.data.forEach((dataRow: CarJoined) => {
+      const row: HTMLTableRowElement = this.makeOneRow(dataRow);
+      this.tbody.appendChild(row);
+    });
     // ciklo metu gaminti ir gauti eilutes i makeOneRow
     // gavus eilute pridet i tbody
   }
@@ -51,12 +56,13 @@ export default class MyTable {
       tr.appendChild(th);
     });
     this.thead.appendChild(tr);
-    this._htmlTable.appendChild(this.thead);
   }
 
   private initialize(): void {
     // sukurti table headers elementus
     this.createTableHeader();
+    this.createTableBodyRows();
+    this._htmlTable.append(this.thead, this.tbody);
     this._htmlTable.className = 'table table-striped';
     const row = this.makeOneRow(this.data[0]);
     console.log('row ===', row);
