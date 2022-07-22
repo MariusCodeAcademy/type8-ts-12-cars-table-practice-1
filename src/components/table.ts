@@ -2,11 +2,11 @@ import CarJoined from '../types/car-joined';
 
 type StringOrNumber = string | number;
 
-type TableProps = {
-  title: string;
-  columns: StringOrNumber;
-  rowsData: StringOrNumber[];
-};
+// type TableProps = {
+//   title: string;
+//   columns: StringOrNumber;
+//   rowsData: StringOrNumber[];
+// };
 
 export default class MyTable {
   private colNames: string[];
