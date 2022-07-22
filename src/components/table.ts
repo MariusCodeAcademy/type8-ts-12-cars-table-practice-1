@@ -9,7 +9,7 @@ type TableProps = {
 };
 
 export default class MyTable {
-  private colNames: string[] = ['id', 'marke', 'modelis', 'kaina', 'metai'];
+  private colNames: string[];
 
   // private props: TableProps,
   private _htmlTable: HTMLTableElement = document.createElement('table');
@@ -19,10 +19,28 @@ export default class MyTable {
   private tbody: HTMLTableSectionElement = document.createElement('tbody');
 
   constructor(private data: CarJoined[]) {
+    this.colNames = Object.keys(data[0]);
     this.initialize();
   }
 
-  private makeOneRow(dataRow: CarJoined): HTMLTableRowElement {}
+  private makeOneRow(dataRow: CarJoined): HTMLTableRowElement {
+    // sukurtti tr
+    const trEl = document.createElement('tr');
+    // sukurti td cikle sudeti i tr
+    Object.values(dataRow).forEach((rowValue: StringOrNumber) => {
+      const tdEl = document.createElement('td');
+      tdEl.textContent = typeof rowValue === 'string' ? rowValue : String(rowValue);
+      trEl.appendChild(tdEl);
+    });
+    // grazinti tr
+    return trEl;
+  }
+
+  private createTableBodyRows(): void {
+    // sukti ciklas per data
+    // ciklo metu gaminti ir gauti eilutes i makeOneRow
+    // gavus eilute pridet i tbody
+  }
 
   private createTableHeader(): void {
     // sukurti table headers elementus
@@ -40,6 +58,8 @@ export default class MyTable {
     // sukurti table headers elementus
     this.createTableHeader();
     this._htmlTable.className = 'table table-striped';
+    const row = this.makeOneRow(this.data[0]);
+    console.log('row ===', row);
     // sukurti table body
     // graziti arba atvaizdtuoti table
   }
